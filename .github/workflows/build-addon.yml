@@ -91,12 +91,12 @@ jobs:
               with ZipFile(target, "w", ZIP_DEFLATED) as z:
                   for f in source.rglob("*"):
                       if f.is_file(): z.write(f, f.relative_to(source).as_posix())
-          with ZipFile(root/"Create-Trains-Bedrock-0.1.mcaddon", "w", ZIP_DEFLATED) as z:
+          with ZipFile(root/"Create-Trains-Bedrock-0.3.mcaddon", "w", ZIP_DEFLATED) as z:
               z.write(root/"CreateTrains_BP.mcpack", "CreateTrains_BP.mcpack")
               z.write(root/"CreateTrains_RP.mcpack", "CreateTrains_RP.mcpack")
           PY
       - uses: actions/upload-artifact@v4
         with:
           name: Create-Trains-Bedrock-mcaddon
-          path: Create-Trains-Bedrock-0.1.mcaddon
+          path: Create-Trains-Bedrock-0.3.mcaddon
           retention-days: 30
