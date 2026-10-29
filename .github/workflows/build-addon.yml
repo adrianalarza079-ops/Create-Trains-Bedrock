@@ -1,0 +1,75 @@
+name: Build Minecraft Bedrock Add-on
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Generate placeholder textures and pack icons
+        run: |
+          python -m pip install pillow
+          python - <<'PY'
+          from PIL import Image, ImageDraw
+          from pathlib import Path
+          root = Path(".")
+          # Train texture
+          p = root / "resource_packs/CreateTrains_RP/textures/entity/train.png"
+          p.parent.mkdir(parents=True, exist_ok=True)
+          im = Image.new("RGBA", (64,64), (0,0,0,0)); d=ImageDraw.Draw(im)
+          d.rectangle((8,12,55,34), fill=(45,48,52,255))
+          d.rectangle((13,7,50,15), fill=(177,78,32,255))
+          d.rectangle((18,3,44,10), fill=(68,72,77,255))
+          d.rectangle((23,0,39,5), fill=(35,37,40,255))
+          d.rectangle((16,17,48,25), fill=(188,105,43,255))
+          d.rectangle((20,19,27,23), fill=(120,195,215,255))
+          d.rectangle((37,19,44,23), fill=(120,195,215,255))
+          d.rectangle((5,29,58,36), fill=(35,37,40,255))
+          for x in [12,25,39,51]:
+              d.ellipse((x-5,34,x+5,44), fill=(24,25,28,255), outline=(180,180,170,255), width=2)
+          d.rectangle((2,30,61,33), fill=(190,135,55,255))
+          im.save(p)
+          # Wrench icon
+          p = root / "resource_packs/CreateTrains_RP/textures/items/assembly_wrench.png"
+          p.parent.mkdir(parents=True, exist_ok=True)
+          im = Image.new("RGBA",(16,16),(0,0,0,0)); d=ImageDraw.Draw(im)
+          d.line((4,12,12,4),fill=(180,180,185,255),width=3)
+          d.line((3,4,12,13),fill=(210,135,48,255),width=3)
+          d.rectangle((2,2,5,5),fill=(65,68,72,255)); im.save(p)
+          # pack icons
+          for folder, color in [(root/"behavior_packs/CreateTrains_BP",(180,90,35,255)),(root/"resource_packs/CreateTrains_RP",(55,60,65,255))]:
+              im=Image.new("RGBA",(128,128),(30,32,35,255)); d=ImageDraw.Draw(im)
+              d.rectangle((15,38,112,83),fill=color); d.rectangle((32,20,90,50),fill=(80,82,85,255))
+              d.ellipse((25,77,52,104),fill=(15,15,15,255),outline=(200,180,130,255),width=4)
+              d.ellipse((77,77,104,104),fill=(15,15,15,255),outline=(200,180,130,255),width=4)
+              im.save(folder/"pack_icon.png")
+          PY
+      - name: Package mcpack and mcaddon
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile, ZIP_DEFLATED
+          root=Path(".")
+          for source, target in [
+              (root/"behavior_packs/CreateTrains_BP", root/"CreateTrains_BP.mcpack"),
+              (root/"resource_packs/CreateTrains_RP", root/"CreateTrains_RP.mcpack")
+          ]:
+              with ZipFile(target, "w", ZIP_DEFLATED) as z:
+                  for f in source.rglob("*"):
+                      if f.is_file(): z.write(f, f.relative_to(source).as_posix())
+          with ZipFile(root/"Create-Trains-Bedrock-0.1.mcaddon", "w", ZIP_DEFLATED) as z:
+              z.write(root/"CreateTrains_BP.mcpack", "CreateTrains_BP.mcpack")
+              z.write(root/"CreateTrains_RP.mcpack", "CreateTrains_RP.mcpack")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Create-Trains-Bedrock-mcaddon
+          path: Create-Trains-Bedrock-0.1.mcaddon
+          retention-days: 30
