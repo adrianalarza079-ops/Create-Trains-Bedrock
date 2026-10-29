@@ -1,21 +1,20 @@
-# Create Trains Bedrock — Prototipo 0.1
+# Create Trains Bedrock — Prototipo 0.2
 
-Add-on experimental para Minecraft Bedrock en Android, inspirado en la idea de construir trenes personalizados.
+Add-on experimental inspirado en la construcción ferroviaria de Create Mod para Minecraft Bedrock.
 
-## Descarga
-La versión empaquetada se publicará en **Releases** cuando termine la compilación: https://github.com/adrianalarza079-ops/Create-Trains-Bedrock/releases
+## Contenido añadido
+- Vía (createtrains:track).
+- Cambio de vía (createtrains:track_switch).
+- Depósito (createtrains:depot).
+- Estación de ensamblaje (createtrains:assembly_station).
+- Andén/pavimento (createtrains:platform).
+- Recetas de fabricación para esos bloques.
+- Entidad de locomotora de prueba y llave de ensamblaje del prototipo inicial.
 
-## Estado real del prototipo
-Esta versión inicial solo incluye una entidad de locomotora de prueba y una llave que intenta invocarla. **Todavía NO** ensambla construcciones arbitrarias de bloques, no tiene vías funcionales ni movimiento ferroviario como Create Java.
+## Limitaciones importantes
+Esta versión NO es todavía un clon completo de Create Mod. Las vías y el cambio de vía son bloques decorativos, no guían trenes; el depósito y la estación no ensamblan automáticamente vehículos; todavía no se puede construir un tren con bloques normales y convertirlo en locomotora o vagón. El modelo y las texturas son provisionales y deben probarse en Minecraft Bedrock 1.26.60. Haz una copia de seguridad de tu mundo.
 
-## Instalación
-1. Descarga el archivo `.mcaddon` desde Releases.
-2. Ábrelo con Minecraft.
-3. Activa el paquete de comportamiento y el paquete de recursos en la configuración del mundo.
-4. Haz una copia de seguridad del mundo antes de probar add-ons.
+## Descargar
+Abre Actions, selecciona la compilación más reciente y descarga el artefacto Create-Trains-Bedrock-mcaddon. Es un ZIP: ábrelo con ZArchiver, extrae el archivo .mcaddon y luego ábrelo con Minecraft.
 
-## Compatibilidad
-Preparado como prototipo para Minecraft Bedrock 1.26.60, pero debe probarse en el juego; no se garantiza que todas las APIs sean compatibles.
-
-## Licencia
-Prototipo original. Create es un proyecto independiente y este add-on no es oficial ni está afiliado a sus creadores.
+Proyecto no oficial y sin afiliación con los creadores de Create Mod.
