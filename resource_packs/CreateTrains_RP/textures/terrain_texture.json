@@ -1,0 +1,23 @@
+{
+  "resource_pack_name": "Create Trains Bedrock",
+  "texture_name": "atlas.terrain",
+  "padding": 8,
+  "num_mip_levels": 4,
+  "texture_data": {
+    "track": {
+      "textures": "textures/blocks/iron_block"
+    },
+    "track_switch": {
+      "textures": "textures/blocks/iron_block"
+    },
+    "depot": {
+      "textures": "textures/blocks/copper_block"
+    },
+    "assembly_station": {
+      "textures": "textures/blocks/iron_block"
+    },
+    "platform": {
+      "textures": "textures/blocks/stone"
+    }
+  }
+}
