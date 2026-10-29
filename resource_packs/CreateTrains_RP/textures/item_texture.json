@@ -19,6 +19,9 @@
     },
     "platform": {
       "textures": "textures/blocks/platform"
+    },
+    "assembly_glue": {
+      "textures": "textures/items/assembly_glue"
     }
   }
 }
