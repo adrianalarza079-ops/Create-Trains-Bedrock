@@ -5,19 +5,19 @@
   "num_mip_levels": 4,
   "texture_data": {
     "track": {
-      "textures": "textures/blocks/iron_block"
+      "textures": "textures/blocks/track"
     },
     "track_switch": {
-      "textures": "textures/blocks/iron_block"
+      "textures": "textures/blocks/track_switch"
     },
     "depot": {
-      "textures": "textures/blocks/copper_block"
+      "textures": "textures/blocks/depot"
     },
     "assembly_station": {
-      "textures": "textures/blocks/iron_block"
+      "textures": "textures/blocks/assembly_station"
     },
     "platform": {
-      "textures": "textures/blocks/stone"
+      "textures": "textures/blocks/platform"
     }
   }
 }
