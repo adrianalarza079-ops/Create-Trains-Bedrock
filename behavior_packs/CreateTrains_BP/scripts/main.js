@@ -1,6 +1,7 @@
 import { world, system } from "@minecraft/server";
 
 const WRENCH = "createtrains:assembly_wrench";
+const GLUE = "createtrains:assembly_glue";
 const TRAIN = "createtrains:train";
 const TRACK = "createtrains:track";
 const SWITCH = "createtrains:track_switch";
@@ -35,6 +36,10 @@ function spawnTrain(player, location) {
   }
 }
 world.afterEvents.itemUse.subscribe((event) => {
+  if (event.itemStack?.typeId === GLUE) {
+    event.source.sendMessage("§6[Create Trains] §fPegamento de ensamblaje: receta añadida. En esta versión todavía no pega ni convierte bloques en un tren; úsalo como objeto experimental mientras se desarrolla el ensamblador.");
+    return;
+  }
   if (event.itemStack?.typeId !== WRENCH) return;
   const player = event.source;
   const dir = horizontalDirection(player);
