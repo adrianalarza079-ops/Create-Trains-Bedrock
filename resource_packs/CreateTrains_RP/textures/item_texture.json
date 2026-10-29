@@ -4,6 +4,21 @@
   "texture_data": {
     "assembly_wrench": {
       "textures": "textures/items/assembly_wrench"
+    },
+    "track": {
+      "textures": "textures/blocks/track"
+    },
+    "track_switch": {
+      "textures": "textures/blocks/track_switch"
+    },
+    "depot": {
+      "textures": "textures/blocks/depot"
+    },
+    "assembly_station": {
+      "textures": "textures/blocks/assembly_station"
+    },
+    "platform": {
+      "textures": "textures/blocks/platform"
     }
   }
 }
