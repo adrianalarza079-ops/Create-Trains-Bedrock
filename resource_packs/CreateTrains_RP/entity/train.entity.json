@@ -1,0 +1,22 @@
+{
+  "format_version": "1.10.0",
+  "minecraft": {
+    "client_entity": {
+      "description": {
+        "identifier": "createtrains:train",
+        "materials": {
+          "default": "entity_alphatest"
+        },
+        "textures": {
+          "default": "textures/entity/train"
+        },
+        "geometry": {
+          "default": "geometry.createtrains.train"
+        },
+        "render_controllers": [
+          "controller.render.default"
+        ]
+      }
+    }
+  }
+}
