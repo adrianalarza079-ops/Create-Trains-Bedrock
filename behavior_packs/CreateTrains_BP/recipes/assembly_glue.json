@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "createtrains:assembly_glue_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " S ",
+      "SCS",
+      " S "
+    ],
+    "key": {
+      "S": {
+        "item": "minecraft:slime_ball"
+      },
+      "C": {
+        "item": "minecraft:honeycomb"
+      }
+    },
+    "result": {
+      "item": "createtrains:assembly_glue",
+      "count": 4
+    }
+  }
+}
