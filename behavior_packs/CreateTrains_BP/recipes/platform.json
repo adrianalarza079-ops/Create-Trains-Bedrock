@@ -1,0 +1,27 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "createtrains:platform_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "SSS",
+      "CCC"
+    ],
+    "key": {
+      "S": {
+        "item": "minecraft:stone_slab"
+      },
+      "C": {
+        "item": "minecraft:cobblestone"
+      }
+    },
+    "result": {
+      "item": "createtrains:platform",
+      "count": 6
+    }
+  }
+}
