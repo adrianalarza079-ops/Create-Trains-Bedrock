@@ -43,6 +43,33 @@ jobs:
           d.line((4,12,12,4),fill=(180,180,185,255),width=3)
           d.line((3,4,12,13),fill=(210,135,48,255),width=3)
           d.rectangle((2,2,5,5),fill=(65,68,72,255)); im.save(p)
+          # Provisional railway block textures, generated at build time.
+          block_dir = root / "resource_packs/CreateTrains_RP/textures/blocks"
+          block_dir.mkdir(parents=True, exist_ok=True)
+          block_specs = {
+              "track": ((65,68,72,255), (190,190,185,255)),
+              "track_switch": ((72,75,79,255), (220,160,55,255)),
+              "depot": ((125,68,35,255), (190,115,55,255)),
+              "assembly_station": ((70,74,78,255), (210,135,45,255)),
+              "platform": ((130,130,125,255), (170,170,165,255)),
+          }
+          for name, (base, accent) in block_specs.items():
+              im = Image.new("RGBA", (16,16), base); d = ImageDraw.Draw(im)
+              if name in ("track", "track_switch"):
+                  d.rectangle((0,3,15,5), fill=accent)
+                  d.rectangle((0,10,15,12), fill=accent)
+                  for x in (2,7,12): d.rectangle((x,1,x+1,14), fill=(40,42,45,255))
+                  if name == "track_switch":
+                      d.line((1,14,14,2), fill=(235,175,65,255), width=2)
+              elif name == "depot":
+                  for y in (3,7,11,15): d.line((0,y,15,y), fill=accent, width=1)
+              elif name == "assembly_station":
+                  d.rectangle((2,2,13,13), outline=accent, width=2)
+                  d.line((2,8,13,8), fill=accent, width=2)
+                  d.line((8,2,8,13), fill=accent, width=2)
+              else:
+                  for y in (4,8,12): d.line((0,y,15,y), fill=accent, width=1)
+              im.save(block_dir / (name + ".png"))
           # pack icons
           for folder, color in [(root/"behavior_packs/CreateTrains_BP",(180,90,35,255)),(root/"resource_packs/CreateTrains_RP",(55,60,65,255))]:
               im=Image.new("RGBA",(128,128),(30,32,35,255)); d=ImageDraw.Draw(im)
