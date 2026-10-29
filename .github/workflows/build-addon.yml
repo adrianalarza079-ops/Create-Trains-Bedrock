@@ -43,6 +43,12 @@ jobs:
           d.line((4,12,12,4),fill=(180,180,185,255),width=3)
           d.line((3,4,12,13),fill=(210,135,48,255),width=3)
           d.rectangle((2,2,5,5),fill=(65,68,72,255)); im.save(p)
+          # Assembly glue icon
+          p = root / "resource_packs/CreateTrains_RP/textures/items/assembly_glue.png"
+          im = Image.new("RGBA",(16,16),(0,0,0,0)); d=ImageDraw.Draw(im)
+          d.ellipse((3,2,12,13),fill=(115,185,80,255),outline=(65,115,45,255),width=1)
+          d.rectangle((5,1,10,4),fill=(180,210,125,255))
+          d.point((6,6),fill=(220,240,165,255)); im.save(p)
           # Provisional railway block textures, generated at build time.
           block_dir = root / "resource_packs/CreateTrains_RP/textures/blocks"
           block_dir.mkdir(parents=True, exist_ok=True)
