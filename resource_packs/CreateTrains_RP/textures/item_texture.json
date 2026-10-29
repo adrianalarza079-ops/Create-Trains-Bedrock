@@ -1,0 +1,9 @@
+{
+  "resource_pack_name": "Create Trains Bedrock",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "assembly_wrench": {
+      "textures": "textures/items/assembly_wrench"
+    }
+  }
+}
